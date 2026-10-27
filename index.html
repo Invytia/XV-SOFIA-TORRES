@@ -81,8 +81,9 @@ body.active #main{display:flex;animation:fin 2s both}
 .cd{font:400 clamp(16px,4.5vw,20px) 'Cormorant Garamond',serif;color:var(--muted);display:flex;align-items:center;justify-content:center;aspect-ratio:1}
 .cd.on{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border-radius:50%;font-weight:600;animation:glow 2s infinite}
 /* Mapas, forms */
-.map{width:100%;max-width:550px;height:320px;margin:28px auto;box-shadow:0 15px 40px rgba(18,48,110,.18);border:2px solid rgba(212,175,55,.5);position:relative;z-index:2}
-.map iframe{width:100%;height:100%;border:0}
+.map{width:100%;max-width:550px;height:320px;margin:28px auto;box-shadow:0 15px 40px rgba(18,48,110,.18);border:2px solid rgba(212,175,55,.5);position:relative;z-index:2; overflow:hidden;}
+.map img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+.map a:hover img{transform:scale(1.05);}
 .fg{width:100%;max-width:400px;margin:0 auto 18px;position:relative;z-index:2}
 .inp{width:100%;padding:17px 0;background:transparent;border:none;border-bottom:1px solid rgba(18,48,110,.25);font:400 15px 'Montserrat',sans-serif;color:var(--navy);text-align:center;outline:none;transition:.4s}
 .inp:focus{border-bottom-color:var(--gold)}
@@ -93,6 +94,12 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 .ticket::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.8),transparent);animation:sweep 4s infinite}
 @keyframes sweep{to{left:160%}}
 .box{background:rgba(255,255,255,.75);border:1px solid rgba(212,175,55,.4);padding:25px 20px;max-width:420px;width:100%;position:relative;z-index:2}
+/* Galería de fotos añadidas */
+.photo-wrap { width: 100%; max-width: 320px; margin: 30px auto; border: 6px solid #fff; box-shadow: 0 15px 35px rgba(18,48,110,.15); position: relative; z-index: 2; border-radius: 6px; overflow: hidden; }
+.photo-wrap img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
+.photo-wrap a { display: block; }
+.photo-wrap:hover img { transform: scale(1.05); }
+
 @media(max-width:400px){.cbox{min-width:58px;padding:0 9px}.cbox b{font-size:34px}.env-title{font-size:58px}.script{font-size:62px}.sec{padding:80px 15px}.idata{font-size:27px}.map{height:260px}.envelope{width:300px;height:195px}.envelope::before,.envelope::after{border-width:97px 150px}.flap{border-left-width:150px;border-right-width:150px;border-top-width:105px}}
 </style>
 </head>
@@ -124,7 +131,8 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <div class="rv u d1 tag">Mis XV Años</div>
 <h1 class="rv z d2 script gold-text">Sofía Torres Sepúlveda</h1>
 <div class="rv u d3 vline"></div>
-<p class="rv u d4 serif">"Hagamos de este día algo mágico para recordar"</p>
+<p class="rv u d4 serif" style="font-size:20px; line-height: 1.5;">Los momentos felices de la vida se vuelven más maravillosos aún cuando tenemos la suerte de compartirlos con los familiares y amigos mas queridos. Vos estás entre ellos, por eso te invito a festejar conmigo</p>
+<div class="rv u d4 photo-wrap"><a href="assets/1.jpg" target="_blank"><img src="assets/1.jpg" alt="Foto 1"></a></div>
 </section>
 
 <!-- FAMILIA -->
@@ -142,6 +150,7 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <path d="M29 0h12v30h29v12H41v58H29V42H0V30h29z" fill="url(#gc)" stroke="#a87b1f" stroke-width="1"/>
 <path d="M33 6h4v30h27v4H37v56h-4V40H6v-4h27z" fill="#fff" opacity=".35"/>
 </svg></div>
+<div class="rv u d4 photo-wrap"><a href="assets/2.jpg" target="_blank"><img src="assets/2.jpg" alt="Foto 2"></a></div>
 </section>
 
 <!-- FECHA -->
@@ -160,6 +169,7 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <h3>Febrero</h3>
 <div class="grid" id="calgrid"></div>
 </div>
+<div class="rv u d4 photo-wrap"><a href="assets/3.jpg" target="_blank"><img src="assets/3.jpg" alt="Foto 3"></a></div>
 <a class="rv u d4 btn" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Sof%C3%ADa+Torres+Sep%C3%BAlveda&dates=20270207T000000Z/20270207T060000Z&details=Hagamos+de+este+d%C3%ADa+algo+m%C3%A1gico+para+recordar&location=Santa+Iglesia+Catedral+del+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs,+Ecatepec">Agendar Evento</a>
 </section>
 
@@ -170,8 +180,9 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <div class="rv z d2 idata" style="max-width:600px">Santa Iglesia Catedral del Sagrado Corazón de Jesús</div>
 <div class="rv u d2" style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:20px">Diócesis de Ecatepec, A. R.</div>
 <div class="rv u d3 tag" style="margin:15px 0 0">18:00 hrs.</div>
-<div class="rv z d4 map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.649033847758!2d-99.04926632451449!3d19.599531235328115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f1a2de5234f7%3A0x5559f65e258b759e!2sSanta%20Iglesia%20Catedral%20del%20Sagrado%20Coraz%C3%B3n%20de%20Jes%C3%BAs%2C%20Di%C3%B3cesis%20de%20Ecatepec%2C%20A.%20R.!5e0!3m2!1ses-419!2smx!4v1792523557870!5m2!1ses-419!2smx" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="rv z d4 map"><a href="assets/U1.jpg" target="_blank"><img src="assets/U1.jpg" alt="Ubicación Ceremonia"></a></div>
 <a class="rv u d4 btn" target="_blank" href="https://maps.app.goo.gl/LZ1JWMsPzySuXaPs6">Ver Ubicación</a>
+<div class="rv u d4 photo-wrap" style="margin-top:40px;"><a href="assets/4.jpg" target="_blank"><img src="assets/4.jpg" alt="Foto 4"></a></div>
 </section>
 
 <!-- RECEPCIÓN -->
@@ -180,8 +191,9 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <div class="rv u d1 ititle">Recepción</div>
 <div class="rv z d2 idata">Salón de Fiestas Orian</div>
 <div class="rv u d3 tag" style="margin:15px 0 0">19:30 hrs.</div>
-<div class="rv z d4 map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.8378976991735!2d-99.04758351730814!3d19.59144428847945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f1ba79b3bbed%3A0xf0e48768d126b073!2sEventos%20Sociales%20Orian!5e0!3m2!1ses-419!2smx!4v1792523919772!5m2!1ses-419!2smx" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+<div class="rv z d4 map"><a href="assets/U2.jpg" target="_blank"><img src="assets/U2.jpg" alt="Ubicación Recepción"></a></div>
 <a class="rv u d4 btn" target="_blank" href="https://maps.app.goo.gl/e2gWQzL8mRoAp1kL7">Ver Ubicación</a>
+<div class="rv u d4 photo-wrap" style="margin-top:40px;"><a href="assets/5.jpg" target="_blank"><img src="assets/5.jpg" alt="Foto 5"></a></div>
 </section>
 
 <!-- VESTIMENTA -->
@@ -191,6 +203,7 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <div class="rv z d2 idata gold-text" style="font:500 40px 'Cinzel',serif;letter-spacing:5px;margin:22px 0">FORMAL<br>CASUAL</div>
 <div class="rv u d3 vline"></div>
 <p class="rv u d4 serif" style="font-size:20px">El color azul en todas sus tonalidades está reservado para la quinceañera.</p>
+<div class="rv u d4 photo-wrap"><a href="assets/6.jpg" target="_blank"><img src="assets/6.jpg" alt="Foto 6"></a></div>
 </section>
 
 <!-- REGALOS -->
@@ -198,8 +211,16 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <div class="orb g" style="width:240px;height:240px;top:10%;right:-80px"></div>
 <div class="rv u d1 ititle">Mesa de Regalos</div>
 <svg class="rv z d2" viewBox="0 0 24 24" style="width:46px;height:46px;fill:var(--gold);margin:18px 0;filter:drop-shadow(0 0 8px rgba(212,175,55,.6))"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-<div class="rv u d3 idata" style="font-size:34px">Lluvia de Sobres</div>
-<p class="rv u d4 serif" style="margin-top:18px;font-size:20px">El mejor regalo es tu compañía, pero si deseas tener un detalle conmigo, queda a tu total libertad, y también habrá lluvia de sobres.</p>
+
+<p class="rv u d3 serif" style="margin-top:18px;font-size:22px">El regalo más valioso para mí es tu presencia, pero si deseas obsequiarme algo, te comparto algunas opciones que recibiré con cariño:</p>
+
+<div class="rv u d3 idata" style="font-size:32px; margin-top:35px;">Regalo físico</div>
+<p class="rv u d4 serif" style="font-size:22px">Es a tu libre elección<br><span style="font-size:17px">(Joyería, Relojes, Maquillaje)</span></p>
+
+<div class="rv u d3 idata" style="font-size:32px; margin-top:35px;">Lluvia de sobres</div>
+<p class="rv u d4 serif" style="font-size:22px">Si quieres regalar algo pero no sabes que, puedes dejar un sobre con dinero para la quinceañera</p>
+
+<div class="rv u d4 photo-wrap" style="margin-top:40px;"><a href="assets/7.jpg" target="_blank"><img src="assets/7.jpg" alt="Foto 7"></a></div>
 </section>
 
 <!-- PLAYLIST -->
@@ -221,6 +242,7 @@ select.inp{appearance:none;text-align-last:center;cursor:pointer}
 <div class="rv u d2 idata" style="font-size:34px">Galería en Vivo</div>
 <p class="rv u d3 serif" style="margin:22px auto;font-size:20px">Captura la magia de esta noche. Comparte todas las fotos y videos que tomes directamente en nuestro álbum digital.<br><br><span style="font:500 14px 'Montserrat',sans-serif;font-style:normal">Te sugerimos tener instalada la app de <strong>Google Drive</strong> para subir tus archivos fácilmente.</span></p>
 <a class="rv u d4 btn" target="_blank" href="https://drive.google.com/drive/folders/1iEhMOju8Be16AMs4jZplu4bF0UJ_LlPh?usp=sharing">Subir mis Fotos</a>
+<div class="rv u d4 photo-wrap" style="margin-top:40px;"><a href="assets/8.jpg" target="_blank"><img src="assets/8.jpg" alt="Foto 8"></a></div>
 </section>
 
 <!-- RSVP -->
